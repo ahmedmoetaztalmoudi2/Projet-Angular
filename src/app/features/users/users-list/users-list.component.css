@@ -1,0 +1,18 @@
+.feature-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-container h1 {
+  color: #2c3a4e;
+  margin-top: 0;
+}
+
+.feature-container p {
+  color: #666;
+  font-size: 16px;
+}

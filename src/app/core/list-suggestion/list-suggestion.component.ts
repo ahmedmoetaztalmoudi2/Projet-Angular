@@ -1,0 +1,93 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Suggestion } from '../../models/suggestion';
+
+@Component({
+  selector: 'app-list-suggestion',
+  standalone: false,
+  templateUrl: './list-suggestion.component.html',
+  styleUrl: './list-suggestion.component.css',
+})
+export class ListSuggestion {
+  suggestions: Suggestion[] = [
+    {
+      id: 1,
+      title: 'Organiser une journée team building',
+      description:
+        "Suggestion pour organiser une journée de team building pour renforcer les liens entre les membres de l'équipe.",
+      category: 'Événements',
+      date: new Date('2025-01-20'),
+      status: 'acceptee',
+      likes: 0,
+    },
+    {
+      id: 2,
+      title: 'Améliorer le système de réservation',
+      description:
+        'Proposition pour améliorer la gestion des réservations en ligne avec un système de confirmation automatique.',
+      category: 'Technologie',
+      date: new Date('2025-01-15'),
+      status: 'refusee',
+      likes: 0,
+    },
+    {
+      id: 3,
+      title: 'Créer un système de récompenses',
+      description:
+        "Mise en place d'un programme de récompenses pour motiver les employés et reconnaître leurs efforts.",
+      category: 'Ressources Humaines',
+      date: new Date('2025-01-25'),
+      status: 'refusee',
+      likes: 0,
+    },
+    {
+      id: 4,
+      title: "Moderniser l'interface utilisateur",
+      description:
+        "Refonte complète de l'interface utilisateur pour une meilleure expérience utilisateur.",
+      category: 'Technologie',
+      date: new Date('2025-01-30'),
+      status: 'en_attente',
+      likes: 0,
+    },
+    {
+      id: 5,
+      title: 'Formation à la sécurité informatique',
+      description:
+        "Organisation d'une formation sur les bonnes pratiques de sécurité informatique pour tous les employés.",
+      category: 'Formation',
+      date: new Date('2025-02-05'),
+      status: 'acceptee',
+      likes: 0,
+    },
+  ];
+
+  favorites: Suggestion[] = [];
+
+  searchQuery = '';
+
+  like(s: Suggestion) {
+    if (s.status === 'refusee') return;
+    s.likes++;
+  }
+
+  addToFavorites(s: Suggestion) {
+    if (s.status === 'refusee') return;
+    const exists = this.favorites.some((f) => f.id === s.id);
+    if (!exists) {
+      this.favorites.push(s);
+    }
+  }
+
+  get filteredSuggestions(): Suggestion[] {
+    const q = this.searchQuery.trim().toLowerCase();
+    return this.suggestions.filter((s) => {
+      if (!q) return true;
+      return (
+        s.title.toLowerCase().includes(q) ||
+        s.category.toLowerCase().includes(q)
+      );
+    });
+  }
+}

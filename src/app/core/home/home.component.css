@@ -1,0 +1,22 @@
+.home-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.home-container h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #2c3a4e;
+}
+
+.home-container p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 15px;
+}
